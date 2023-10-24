@@ -1,0 +1,60 @@
+# This file was generated. Do not edit manually.
+
+schema {
+    query: Query
+}
+
+directive @tag(name: String!) on SCHEMA | SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | INTERFACE | UNION | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+
+"Объект отображающий инфрормацию о заходе на сайт"
+type Metric {
+    "Браузер с которого был совершен переход"
+    browser: Browser!
+    "Устройство с которого был совершен переход"
+    device: Device!
+    "Длительность пребывания пользователя на сайте"
+    duration: TimeSpan!
+    "ID записи"
+    id: UUID!
+    "Является ли пользователь впервые перешедшим на сайт"
+    isNew: Boolean!
+    "Время в которое был совершен переход"
+    visitTime: DateTime!
+}
+
+"Запросы на получение чего либо"
+type Query {
+    "Получение метрк по интервалу времени"
+    metrics(input: GetMetricsInput!): [Metric!]!
+}
+
+enum Browser {
+    CHROME
+    FIREFOX
+    SAFARI
+}
+
+enum Device {
+    MOBILE
+    PC
+    TABLET
+}
+
+"The `Date` scalar represents an ISO-8601 compliant date type."
+scalar Date
+
+"The `DateTime` scalar represents an ISO-8601 compliant date time type."
+scalar DateTime
+
+"The `TimeSpan` scalar represents an ISO-8601 compliant duration type."
+scalar TimeSpan
+
+scalar UUID
+
+"Входные данные для получения метрики"
+input GetMetricsInput {
+    "Интервал сбора, дата конца, вложение включительно"
+    dateEnd: Date!
+    "Интервал сбора, дата начала, вложение включительно"
+    dateStart: Date!
+}

@@ -1,0 +1,13 @@
+query getMetrics(
+    $dateEnd: Date!
+    $dateStart: Date!
+) {
+    metrics(input: {dateEnd: $dateEnd, dateStart: $dateStart}) {
+        id
+        browser
+        device
+        duration
+        isNew
+        visitTime
+    }
+}
