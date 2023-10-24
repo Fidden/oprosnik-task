@@ -5,5 +5,11 @@ export const graphqlClient: NuxtConfig['graphql-client'] = {
 	codegen: {
 		onlyOperationTypes: false,
 		disableOnBuild: false,
+	},
+	clients: {
+		default: {
+			host: process.env.GQL_PROXY,
+			introspectionHost: process.env.GQL_URL
+		}
 	}
 };

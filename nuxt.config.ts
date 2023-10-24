@@ -18,7 +18,7 @@ export default defineNuxtConfig({
 		}
 	},
 	routeRules: {
-		'/graphql': { proxy: process.env.GQL_HOST },
+		'/graphql': { proxy: process.env.GQL_URL },
 	},
 	modules: [
 		'nuxt-mvvm',
@@ -27,5 +27,5 @@ export default defineNuxtConfig({
 	],
 	srcDir: 'src/',
 	devtools: {enabled: true},
-	'graphql-client': graphqlClient
+	'graphql-client': graphqlClient,
 });
